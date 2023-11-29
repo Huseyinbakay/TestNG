@@ -9,13 +9,17 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    public static String getProperty(String key) throws FileNotFoundException {
+    public static String getProperty(String key) {
 
 
         Properties properties=new Properties();
 
-        FileInputStream fis=new FileInputStream("configuration.properties");
-
+        FileInputStream fis= null;
+        try {
+            fis = new FileInputStream("configuration.properties");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
 
         try {
