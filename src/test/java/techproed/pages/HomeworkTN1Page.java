@@ -33,13 +33,23 @@ public class HomeworkTN1Page {
     public WebElement singInOnay;
 
 
+    @FindBy(id = "online-banking")
+    public WebElement moreServicesButton;
+
+    @FindBy(name = "submit")
+    public WebElement ingInOnay;
 
 
+    @FindBy(name = "submit")
+    public WebElement ngInOnay;
 
 
+    @FindBy(name = "submit")
+    public WebElement InOnay;
 
 
-
+    @FindBy(name = "submit")
+    public WebElement Innay;
 
 
 

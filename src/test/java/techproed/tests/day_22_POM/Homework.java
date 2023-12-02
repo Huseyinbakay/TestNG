@@ -3,13 +3,17 @@ package techproed.tests.day_22_POM;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.BlueRentalPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,7 +25,7 @@ public class Homework {
 
     Actions actions;
     @Test
-    public void testNegative01() {
+    public void negativeLoginTest() {
 /*
         Name:
         US100402_Negative_Login
@@ -49,8 +53,8 @@ public class Homework {
     }
 
 
-    @Test(dependsOnMethods ="testNegative01" )
-    public void test() {
+    @Test(dependsOnMethods ="negativeLoginTest" )
+    public void negativeReservationtest() {
 
 
         actions=new Actions(Driver.getDriver());
@@ -68,13 +72,11 @@ public class Homework {
         blueRentalPage.pickUpTime.sendKeys(DateTimeFormatter.ofPattern("HHmmss").format(LocalDateTime.now().minusHours(2)));
         blueRentalPage.dropOffDate.sendKeys(DateTimeFormatter.ofPattern("ddMMyyyy").format(LocalDate.now().minusDays(10)));
         blueRentalPage.dropOffTime.sendKeys(DateTimeFormatter.ofPattern("HHmmss").format(LocalDateTime.now().minusHours(2)));
+        blueRentalPage.reservation.click();
 
-
-
-
-
-
-
+        WebDriverWait wait=new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(blueRentalPage.pleaseLoginAlert));
+        Assert.assertTrue(blueRentalPage.pleaseLoginAlert.isDisplayed());
 
        /*
         Name:

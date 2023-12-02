@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Batch189">
+    
+ <test name="SmokeTest">
+     
+    <classes>
+        <class name="techproed.tests.day19_anotocians.C01_Notasyonlar"></class>
+        <class name="techproed.tests.day_22_POM.C03_PositiveLoginTest"></class>
+        <class name="techproed.tests.day_23_ExelTest.C01_ExelTest"></class>
+    </classes>
+     
+ </test>   
+        
+</suite>
+
+
+        <!--ctrl + / yaparak yorum satiri ekleyebilirisinz-->

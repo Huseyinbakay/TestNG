@@ -91,7 +91,8 @@ public class BlueRentalPage {
     public WebElement reservation;
 
 
-
+    @FindBy(xpath = "//*[contains( text(), 'Please first login'  )]")
+    public WebElement pleaseLoginAlert;
 
 
 }

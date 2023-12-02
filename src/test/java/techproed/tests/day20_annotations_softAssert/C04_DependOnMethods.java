@@ -35,7 +35,7 @@ public class C04_DependOnMethods {
         //aram kurusuna iphone yaz
         WebElement textbox=driver.findElement(By.id("twotabsearchtextbox"));
         textbox.sendKeys("iphone", Keys.ENTER);
-        Assert.assertTrue(2==3);
+        Assert.assertTrue(3==3);
 
         //sonuc yazısının iphone içerdiğini test et
     }

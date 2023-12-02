@@ -1,5 +1,6 @@
 package techproed.tests.day_21_POM;
 
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import techproed.pages.HomeworkTN1Page;
@@ -7,7 +8,7 @@ import techproed.utilities.Driver;
 
 public class HomeworkTN1Kullanımı {
 
-
+   Actions actions;
     @Test
     public void test01() {
 
@@ -42,9 +43,14 @@ public class HomeworkTN1Kullanımı {
         Driver.getDriver().navigate().back();
 
 //6. Online banking menusu icinde Pay Bills sayfasina gidin başlığın Zero içerdiğini test edin
+    actions=new Actions(Driver.getDriver());
 
+    actions.scrollToElement(homeworkTN1.moreServicesButton).perform();
+    homeworkTN1.moreServicesButton.click();
+    softAssert.assertTrue(Driver.getDriver().getTitle().contains("Zero"));
 
 //7. "Purchase Foreign Currency" tusuna basin
+
 //8. "Currency" drop down menusunden Eurozone'u secin
 //9. soft assert kullanarak "Eurozone (Euro)" secildigini test edin
 //10.soft assert kullanarak DropDown listesinin su secenekleri oldugunu test

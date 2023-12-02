@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Batch189">
+    
+ <test name="SmokeTest">
+     
+     <packages>
+         
+       <package name="techproed.tests.day19_anotocians"></package>
+         <package name="techproed.tests.day_21_POM"></package>
+         <package name="techproed.tests.day_22_POM"></package>
+         
+     </packages>
+     
+ </test>   
+        
+</suite>
+
+
