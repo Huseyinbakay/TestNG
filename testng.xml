@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="classes" thread-count="2">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/asus/IdeaProjects/Batch189TestNGNT/src/test/java/techproed/tests/day_25_xlmFiles_paralel_testing/C02_ParalelTesting.java">
+        <classes>
+            <class name="techproed.tests.day_25_xlmFiles_paralel_testing.C01_ParalelTesting">
+            </class>
+            <class name="techproed.tests.day_25_xlmFiles_paralel_testing.C02_ParalelTesting">
+            </class>
+
+        </classes>
+    </test>
+</suite>

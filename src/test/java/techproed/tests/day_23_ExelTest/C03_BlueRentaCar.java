@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 public class C03_BlueRentaCar {
 
 
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
 
 

@@ -8,8 +8,52 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
-public class Driver {
 
+public class Driver {
+    // ThreadLocal ile her thread için ayrı bir WebDriver objesi oluşturuyoruz.
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        if (driverPool.get() == null) {
+            // WebDriver i thread bazında oluşturuyoruz.
+            switch (ConfigReader.getProperty("browser")) {
+                case "chrome":
+                    driverPool.set(new ChromeDriver());
+                    break;
+                case "edge":
+                    driverPool.set(new EdgeDriver());
+                    break;
+                case "safari":
+                    driverPool.set(new SafariDriver());
+                    break;
+                case "firefox":
+                    driverPool.set(new FirefoxDriver());
+                    break;
+                default:
+                    driverPool.set(new ChromeDriver());
+            }
+
+            // Oluşturulan WebDriveri yapılandırıyoruz.
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        }
+        // Thread'a özgü WebDriver objecti return ediyoruz.
+        return driverPool.get();
+    }
+
+    private Driver() {
+        // Singleton pattern
+    }
+
+    public static void closeDriver() {
+        // Açık olan WebDriver örneğini kapatıyoruz.
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove(); // ThreadLocal'daki referansı temizliyoruz.
+        }
+    }
+
+}
 
 
       /*
@@ -24,6 +68,13 @@ public class Driver {
         hata almamamk icin if block u ile ayarlama yaptik*/
 
 
+
+
+        // ThreadLocal ile her thread için ayrı bir WebDriver objesi oluşturuyoruz.
+        //private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+        //Webdriver tipnde bir ThreadLocal objesi oluşturduk.Amacım paralel test yapabilmek
+
+/*
     private Driver() {
 
     }
@@ -35,7 +86,7 @@ public class Driver {
 
 
 
-        if (driver == null) {
+        if (driverPool.get() == null) {
 
             switch (ConfigReader.getProperty("browser")){
 
@@ -92,7 +143,7 @@ public class Driver {
 
 
 
-}
+
 
 
 

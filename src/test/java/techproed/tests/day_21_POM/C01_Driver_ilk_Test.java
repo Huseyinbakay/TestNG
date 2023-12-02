@@ -6,7 +6,7 @@ import techproed.utilities.Driver;
 public class C01_Driver_ilk_Test {
 
 
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
 
         Driver.getDriver().get("https://google.com");
